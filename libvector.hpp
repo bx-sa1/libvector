@@ -3,20 +3,22 @@
 
 #include <cmath>
 
-template<typename T>
-struct Vector2 {
-    T x, y;
+namespace vector {
+    template<typename T>
+    struct vec2 {
+        T x, y;
 
-    T length() { return std::sqrt((x * x) + (y * y)); }
-    Vector2<T> normalise() { 
-        T length = this->length();
+        T length() { return std::sqrt((x * x) + (y * y)); }
+        vec2<T> normalise() { 
+            T length = this->length();
 
-        if(length == 0) return *this;
-        Vector2<T> b{x / length, y / length};
-        return b;
-    }
+            if(length == 0) return *this;
+            vec2<T> b{x / length, y / length};
+            return b;
+        }
 
-    bool is_zero() { return x == 0 && y == 0; }
-};
+        bool is_zero() { return x == 0 && y == 0; }
+    };
+}
 
 #endif
